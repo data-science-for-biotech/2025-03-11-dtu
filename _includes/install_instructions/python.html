@@ -37,7 +37,7 @@ https://jupyter-notebook.readthedocs.io/en/stable/notebook.html#browser-compatib
   <p>
     Regardless of how you choose to install it,
     <strong>please make sure you install Python version 3.x</strong>
-    (e.g., 3.9 is fine).
+    (e.g., 3.11 or 3.12 is fine).
   </p>
 
   {% comment %}
@@ -58,191 +58,14 @@ https://jupyter-notebook.readthedocs.io/en/stable/notebook.html#browser-compatib
 
     <div class="tab-content">
       <article role="tabpanel" class="tab-pane active" id="python-windows">
-        <ol>
-          <li>In the WSL2 terminal, type
-            <pre>cd ~</pre> and press <kbd>Enter</kbd> (or <kbd>Return</kbd> depending on your keyboard).
-          </li>
-          <li>Type
-            <pre>wget "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"</pre> and press
-            <kbd>Enter</kbd>
-          </li>
-          <li>
-            Type
-            <pre>bash Mambaforge-$(uname)-$(uname -m).sh</pre> and then press <kbd>Enter</kbd>.
-            You will follow the text-only prompts.
-            To move through the text, press <kbd>Spacebar</kbd>.
-            Type <code>yes</code> and press enter to approve the license.
-            Press <kbd>Enter</kbd> (or <kbd>Return</kbd>)
-            to approve the default location
-            for the files.
-            Type <code>yes</code> and press
-            <kbd>Enter</kbd> (or <kbd>Return</kbd>)
-            to prepend mamba to your <code>PATH</code>
-            (this makes the mamba distribution the default Python).
-          </li>
-          <li>
-            Close the terminal window and re-start the Terminal app.
-          </li>
-          <li>Type
-            <pre>conda config --set auto_activate_base false</pre> and press <kbd>Enter</kbd> to stop conda from
-            auto-activating.
-          </li>
-          <li>
-            Close the terminal window and re-start the Terminal app one more time.
-          </li>
-          <li>Type the following commands, hit <kbd>Enter</kbd> after each line:
-            <pre>
-conda config --add channels defaults
-conda config --add channels bioconda
-conda config --add channels conda-forge
-conda config --set channel_priority strict
-mamba activate base
-mamba update mamba
-mamba update --all
-          </pre>
-          </li>
-          <li>Lastly, to install Jupyter Lab and all dependencies, type the following commands, hit <kbd>Enter</kbd>
-            after each line:
-            <pre>
-mamba create -n jupyter python=3
-mamba activate jupyter
-mamba install numpy pandas scikit-learn matplotlib jupyter jupyterlab altair pip git altair odfpy openpyxl seaborn scikit-bio scipy umap-learn
-            </pre>
-          </li>
-          <li>To check your install, type
-            <pre>explorer.exe .</pre> in your WSL terminal and hit <kbd>Enter</kbd> to open an explorer window in your
-            WSL home directory.
-          </li>
-          <li>Download and copy the <a href="setup/check_install.py">check_install.py</a> script into your WSL home
-            directory.
-          </li>
-          <li>In the WSL terminal window, run
-            <pre>python3 check_install.py</pre>. If it prints
-            <pre>All dependencies installed!</pre> you're good to go.
-          </li>
-        </ol>
+        {% include install_instructions/mamba_install.html %}
         <div>Also see our YouTube tutorials for <a href="https://www.youtube.com/watch?v=q4dM2XLwpBA">installing
             miniconda</a> and <a href="https://www.youtube.com/watch?v=BubLwFfmzlQ">installing jupyter</a>.</div>
       </article>
       <article role="tabpanel" class="tab-pane" id="python-macos">
-        <ol>
-          <li>In your Terminal app, type
-            <pre>cd ~</pre> and press <kbd>Enter</kbd> (or <kbd>Return</kbd> depending on your keyboard).
-          </li>
-          <li>Type
-            <pre>wget "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"</pre> and press
-            <kbd>Enter</kbd>
-          </li>
-          <li>
-            Type
-            <pre>bash Mambaforge-$(uname)-$(uname -m).sh</pre> and then press <kbd>Enter</kbd>.
-            You will follow the text-only prompts.
-            To move through the text, press <kbd>Spacebar</kbd>.
-            Type <code>yes</code> and press enter to approve the license.
-            Press <kbd>Enter</kbd> (or <kbd>Return</kbd>)
-            to approve the default location
-            for the files.
-            Type <code>yes</code> and press
-            <kbd>Enter</kbd> (or <kbd>Return</kbd>)
-            to prepend mamba to your <code>PATH</code>
-            (this makes the mamba distribution the default Python).
-          </li>
-          <li>
-            Close the terminal window and re-start the Terminal app.
-          </li>
-          <li>Type
-            <pre>conda config --set auto_activate_base false</pre> and press <kbd>Enter</kbd> to stop conda from
-            auto-activating.
-          </li>
-          <li>
-            Close the terminal window and re-start the Terminal app one more time.
-          </li>
-          <li>Type the following commands, hit <kbd>Enter</kbd> after each line:
-            <pre>
-conda config --add channels defaults
-conda config --add channels bioconda
-conda config --add channels conda-forge
-conda config --set channel_priority strict
-mamba activate base
-mamba update mamba
-mamba update --all
-          </pre>
-          </li>
-          <li>Lastly, to install Jupyter Lab and all dependencies, type the following commands, hit <kbd>Enter</kbd>
-            after each line:
-            <pre>
-mamba create -n jupyter python=3
-mamba activate jupyter
-mamba install numpy pandas scikit-learn matplotlib jupyter jupyterlab altair pip git altair odfpy openpyxl seaborn scikit-bio scipy umap-learn
-            </pre>
-          </li>
-          <li>To check your install, download the <a href="setup/check_install.py">check_install.py</a> script.
-          </li>
-          <li>In the Terminal window, run
-            <pre>python3 ~/Download/check_install.py</pre>. If it prints
-            <pre>All dependencies installed!</pre> you're good to go.
-          </li>
-        </ol>
-      </article>
+        {% include install_instructions/mamba_install.html %}      </article>
       <article role="tabpanel" class="tab-pane" id="python-linux">
-        <ol>
-          <li>In a terminal window, type
-            <pre>cd ~</pre> and press <kbd>Enter</kbd> (or <kbd>Return</kbd> depending on your keyboard).
-          </li>
-          <li>Type
-            <pre>wget "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"</pre> and press
-            <kbd>Enter</kbd>
-          </li>
-          <li>
-            Type
-            <pre>bash Mambaforge-$(uname)-$(uname -m).sh</pre> and then press <kbd>Enter</kbd>.
-            You will follow the text-only prompts.
-            To move through the text, press <kbd>Spacebar</kbd>.
-            Type <code>yes</code> and press enter to approve the license.
-            Press <kbd>Enter</kbd> (or <kbd>Return</kbd>)
-            to approve the default location
-            for the files.
-            Type <code>yes</code> and press
-            <kbd>Enter</kbd> (or <kbd>Return</kbd>)
-            to prepend mamba to your <code>PATH</code>
-            (this makes the mamba distribution the default Python).
-          </li>
-          <li>
-            Close the terminal window and re-start the terminal.
-          </li>
-          <li>Type
-            <pre>conda config --set auto_activate_base false</pre> and press <kbd>Enter</kbd> to stop conda from
-            auto-activating.
-          </li>
-          <li>
-            Close the terminal window and re-start the terminal one more time.
-          </li>
-          <li>Type the following commands, hit <kbd>Enter</kbd> after each line:
-            <pre>
-conda config --add channels defaults
-conda config --add channels bioconda
-conda config --add channels conda-forge
-conda config --set channel_priority strict
-mamba activate base
-mamba update mamba
-mamba update --all
-          </pre>
-          </li>
-          <li>Lastly, to install Jupyter Lab and all dependencies, type the following commands, hit <kbd>Enter</kbd>
-            after each line:
-            <pre>
-mamba create -n jupyter python=3
-mamba activate jupyter
-mamba install numpy pandas scikit-learn matplotlib jupyter jupyterlab altair pip git altair odfpy openpyxl seaborn scikit-bio scipy umap-learn
-            </pre>
-          </li>
-          <li>To check your install, download the <a href="setup/check_install.py">check_install.py</a> script.
-          </li>
-          <li>In the Terminal window, run
-            <pre>python3 ~/Download/check_install.py</pre>. If it prints
-            <pre>All dependencies installed!</pre> you're good to go.
-          </li>
-        </ol>
+        {% include install_instructions/mamba_install.html %}
       </article>
     </div>
   </div>
