@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import importlib
-from pathlib import PurePath
 import shutil
 import subprocess
 import sys
@@ -17,12 +16,18 @@ def test_executable(program: str) -> None:
     if path is None:
         raise DependencyNotFoundError(program)
 
-    out = subprocess.check_output([path, "--version"], encoding="utf-8").split("\n")[0]
+    if program == "unzip":
+        # unzip wants -v instead of --version
+        out = subprocess.check_output([path, "-v"], encoding="utf-8").split("\n")[0]
+    else:
+        out = subprocess.check_output([path, "--version"], encoding="utf-8").split(
+            "\n"
+        )[0]
     print(f"{program} found: {out}")
 
 
 def test_lib(name: str) -> None:
-    mod  = importlib.import_module(name)
+    _ = importlib.import_module(name)
     print(f"{name} found.")
 
 
@@ -30,6 +35,7 @@ EXECUTABLES = [
     "bash",
     "git",
     "python3",
+    "unzip",
 ]
 
 MODULES = [
@@ -38,6 +44,12 @@ MODULES = [
     "sklearn",
     "matplotlib",
     "altair",
+    "odf",
+    "openpyxl",
+    "seaborn",
+    "skbio",
+    "skbio.diversity",
+    "umap",
 ]
 
 
@@ -57,14 +69,12 @@ def main():
             print(f"{mod} not found, check your installation.")
             errors = True
 
-
     if errors:
         print("Failed to find all dependencies, please check the output above!")
         sys.exit(1)
 
     print("All dependencies installed!")
     sys.exit(0)
-
 
 
 if __name__ == "__main__":
