@@ -3,12 +3,12 @@
     <pre>cd ~</pre> and press <kbd>Enter</kbd> (or <kbd>Return</kbd> depending on your keyboard).
   </li>
   <li>Type
-    <pre>wget "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"</pre> and press
+    <pre>wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge-$(uname)-$(uname -m).sh"</pre> and press
     <kbd>Enter</kbd>
   </li>
   <li>
     Type
-    <pre>bash Mambaforge-$(uname)-$(uname -m).sh</pre> and then press <kbd>Enter</kbd>.
+    <pre>bash Miniforge-$(uname)-$(uname -m).sh</pre> and then press <kbd>Enter</kbd>.
     You will follow the text-only prompts.
     To move through the text, press <kbd>Spacebar</kbd>.
     Type <code>yes</code> and press enter to approve the license.
@@ -17,8 +17,8 @@
     for the files.
     Type <code>yes</code> and press
     <kbd>Enter</kbd> (or <kbd>Return</kbd>)
-    to prepend mamba to your <code>PATH</code>
-    (this makes the mamba distribution the default Python).
+    to prepend conda to your <code>PATH</code>
+    (this makes the conda distribution the default Python).
   </li>
   <li>
     Close the terminal window and re-start the Terminal app.
@@ -36,18 +36,18 @@ conda config --remove channels defaults
 conda config --add channels bioconda
 conda config --add channels conda-forge
 conda config --set channel_priority strict
-mamba activate base
-mamba update mamba
-mamba update --all
+conda activate base
+conda update conda
+conda update --all
   </pre>
     Don't worry if the first command results in an error message, we just want to make sure the "defaults" channel is not configured.
   </li>
   <li>Lastly, to install Jupyter Lab and all dependencies, type the following commands, hit <kbd>Enter</kbd>
     after each line:
     <pre>
-mamba create -n jupyter python=3
-mamba activate jupyter
-mamba install numpy pandas scikit-learn matplotlib jupyter jupyterlab altair pip git altair odfpy openpyxl seaborn scikit-bio scipy umap-learn wget unzip
+conda create -n jupyter python=3
+conda activate jupyter
+conda install numpy pandas scikit-learn matplotlib jupyter jupyterlab altair pip git altair odfpy openpyxl seaborn scikit-bio scipy umap-learn wget unzip
     </pre>
   </li>
   <li>To check your install, type
