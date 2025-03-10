@@ -3,12 +3,14 @@
     <pre>cd ~</pre> and press <kbd>Enter</kbd> (or <kbd>Return</kbd> depending on your keyboard).
   </li>
   <li>Type
-    <pre>wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge-$(uname)-$(uname -m).sh"</pre> and press
+    <pre>wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"</pre> and press
     <kbd>Enter</kbd>
+    If you get an error message about <pre>wget</pre> not being found, try
+      <pre>curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"</pre> and press <kbd>Enter</kbd>.
   </li>
   <li>
     Type
-    <pre>bash Miniforge-$(uname)-$(uname -m).sh</pre> and then press <kbd>Enter</kbd>.
+    <pre>bash Miniforge3-$(uname)-$(uname -m).sh</pre> and then press <kbd>Enter</kbd>.
     You will follow the text-only prompts.
     To move through the text, press <kbd>Spacebar</kbd>.
     Type <code>yes</code> and press enter to approve the license.
