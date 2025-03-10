@@ -5,7 +5,7 @@
   <li>Type
     <pre>wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"</pre> and press
     <kbd>Enter</kbd>
-    If you get an error message about <pre>wget</pre> not being found, try
+    If you get an error message like <pre>bash: wget: command not found</pre>, try
       <pre>curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"</pre> and press <kbd>Enter</kbd>.
   </li>
   <li>
@@ -39,17 +39,17 @@ conda config --add channels bioconda
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 conda activate base
-conda update conda
-conda update --all
+conda update --yes conda
+conda update --yes --all
   </pre>
     Don't worry if the first command results in an error message, we just want to make sure the "defaults" channel is not configured.
   </li>
   <li>Lastly, to install Jupyter Lab and all dependencies, type the following commands, hit <kbd>Enter</kbd>
     after each line:
     <pre>
-conda create -n jupyter python=3
+conda create --yes -n jupyter python=3
 conda activate jupyter
-conda install numpy pandas scikit-learn matplotlib jupyter jupyterlab altair pip git altair odfpy openpyxl seaborn scikit-bio scipy umap-learn wget unzip
+conda install --yes numpy pandas scikit-learn matplotlib jupyter jupyterlab altair pip git altair odfpy openpyxl seaborn scikit-bio scipy umap-learn wget unzip
     </pre>
   </li>
   <li>To check your install, type
